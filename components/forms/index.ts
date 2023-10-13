@@ -1,3 +1,4 @@
 import AcountProfile from "./AccountProfile";
+import PostThread from "./PostThread";
 
-export { AcountProfile };
+export { AcountProfile, PostThread };

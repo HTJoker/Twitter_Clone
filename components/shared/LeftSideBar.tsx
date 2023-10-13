@@ -14,14 +14,14 @@ const LeftSideBar = () => {
     <section className="custom-scrollbar leftsidebar">
       <div className="flex w-full flex-1 flex-col gap-6 px-6">
         {sidebarLinks.map((link) => {
-          const isActive =
-            (pathname.includes(link.route) && link.route.length > 0) ||
-            pathname === link.route;
+          const isActive = pathname === link.route;
           return (
             <Link
               href={link.route}
               key={link.label}
-              className={`leftsidebar_link ${isActive && "bg-primary-500"}`}
+              className={`leftsidebar_link ${
+                !!isActive ? "bg-primary-500" : "bg-none"
+              }`}
             >
               <Image
                 src={link.imgURL}
@@ -37,7 +37,7 @@ const LeftSideBar = () => {
       <div className="mt-10 px-6">
         <SignedIn>
           <SignOutButton signOutCallback={() => router.push("/sign-in")}>
-            <div className="flex cursor-pointer gap-4 p-4">
+            <div className="leftsidebar_link flex cursor-pointer gap-4 p-4 hover:bg-primary-500">
               <Image
                 src="/assets/logout.svg"
                 alt="logout"
