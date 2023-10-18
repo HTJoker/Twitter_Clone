@@ -7,5 +7,4 @@ export const ThreadValidation = zod.object({
 
 export const CommentValidation = zod.object({
   thread: zod.string().min(2),
-  accountId: zod.string(),
 });

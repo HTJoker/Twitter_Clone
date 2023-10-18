@@ -1,8 +1,9 @@
 "use client";
-import * as z from "zod";
+
+import { z } from "zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -11,22 +12,21 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+} from "@components/ui/form";
+
+import { Input } from "@components/ui/input";
+import { Button } from "@components/ui/button";
 
 import { CommentValidation } from "@lib/validations/thread";
 import { addCommentToThread } from "@lib/actions/thread.actions";
-// import { createThread } from "@lib/actions/thread.actions";
+
 interface Props {
   threadId: string;
   currentUserImage: string;
   currentUserId: string;
 }
 
-const Comment = ({ threadId, currentUserImage, currentUserId }: Props) => {
-  const router = useRouter();
+function Comment({ threadId, currentUserImage, currentUserId }: Props) {
   const pathname = usePathname();
 
   const form = useForm<z.infer<typeof CommentValidation>>({
@@ -37,12 +37,12 @@ const Comment = ({ threadId, currentUserImage, currentUserId }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
-    const res = await addCommentToThread(
-      threadId,
-      values.thread,
-      JSON.parse(currentUserId),
-      pathname,
-    );
+    await addCommentToThread({
+      threadId: threadId,
+      commentText: values.thread,
+      userId: JSON.parse(currentUserId),
+      path: pathname,
+    });
 
     form.reset();
   };
@@ -82,6 +82,6 @@ const Comment = ({ threadId, currentUserImage, currentUserId }: Props) => {
       </form>
     </Form>
   );
-};
+}
 
 export default Comment;
