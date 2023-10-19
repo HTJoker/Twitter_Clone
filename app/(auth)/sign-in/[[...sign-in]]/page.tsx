@@ -3,7 +3,7 @@ import { dark } from "@clerk/themes";
 
 export default function Page() {
   return (
-    <div className=" flex h-[100vh] w-full items-center justify-center border">
+    <div>
       <SignIn appearance={{ baseTheme: dark }} />;
     </div>
   );

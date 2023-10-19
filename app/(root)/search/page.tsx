@@ -27,8 +27,15 @@ const Page = async () => {
           <p className="no-result">No Users</p>
         ) : (
           <>
-            {result.users.map((user) => (
-              <UserCard />
+            {result.users.map((person) => (
+              <UserCard
+              key={person.id}
+              id={person.id}
+              name={person.name}
+              username={person.username}
+              imgUrl={person.imgage}
+              personType="User"
+              />
             ))}
           </>
         )}
