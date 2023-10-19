@@ -1,5 +1,5 @@
-const Activity = () => {
+const Page = () => {
   return <div className="head-text">Activity</div>;
 };
 
-export default Activity;
+export default Page;
