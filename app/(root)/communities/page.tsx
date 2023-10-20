@@ -1,11 +1,7 @@
-import { Tabs } from "@components/ui/tabs";
+import React from "react";
 
-const Page = async () => {
-  return (
-    <section>
-      <h1 className="head-text mb-10">Communities</h1>
-    </section>
-  );
+const page = () => {
+  return <div>page</div>;
 };
 
-export default Page;
+export default page;
