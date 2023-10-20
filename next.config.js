@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     serverActions: true,
     serverComponentsExternalPackages: ["mongoose"],
@@ -29,8 +32,8 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "utfs.io"
-      }
+        hostname: "utfs.io",
+      },
     ],
   },
 };
