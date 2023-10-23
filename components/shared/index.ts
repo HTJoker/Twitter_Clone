@@ -4,5 +4,14 @@ import LeftSideBar from "./LeftSideBar";
 import RightSideBar from "./RightSideBar";
 import ProfileHeader from "./ProfileHeader";
 import ThreadsTab from "./ThreadsTab";
+import Pagination from "./Pagination";
 
-export { TopBar, BottomBar, LeftSideBar, RightSideBar, ProfileHeader, ThreadsTab };
+export {
+  TopBar,
+  BottomBar,
+  LeftSideBar,
+  RightSideBar,
+  ProfileHeader,
+  ThreadsTab,
+  Pagination,
+};
