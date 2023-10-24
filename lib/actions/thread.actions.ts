@@ -49,20 +49,24 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 }
 
 interface Params {
-  text: string,
-  author: string,
-  communityId: string | null,
-  path: string,
+  text: string;
+  author: string;
+  communityId: string | null;
+  path: string;
 }
 
-export async function createThread({ text, author, communityId, path }: Params
-) {
+export async function createThread({
+  text,
+  author,
+  communityId,
+  path,
+}: Params) {
   try {
     connectToDB();
 
     const communityIdObject = await Community.findOne(
       { id: communityId },
-      { _id: 1 }
+      { _id: 1 },
     );
 
     const createdThread = await Thread.create({
@@ -126,14 +130,14 @@ export async function deleteThread(id: string, path: string): Promise<void> {
       [
         ...descendantThreads.map((thread) => thread.author?._id?.toString()), // Use optional chaining to handle possible undefined values
         mainThread.author?._id?.toString(),
-      ].filter((id) => id !== undefined)
+      ].filter((id) => id !== undefined),
     );
 
     const uniqueCommunityIds = new Set(
       [
         ...descendantThreads.map((thread) => thread.community?._id?.toString()), // Use optional chaining to handle possible undefined values
         mainThread.community?._id?.toString(),
-      ].filter((id) => id !== undefined)
+      ].filter((id) => id !== undefined),
     );
 
     // Recursively delete child threads and their descendants
@@ -142,13 +146,13 @@ export async function deleteThread(id: string, path: string): Promise<void> {
     // Update User model
     await User.updateMany(
       { _id: { $in: Array.from(uniqueAuthorIds) } },
-      { $pull: { threads: { $in: descendantThreadIds } } }
+      { $pull: { threads: { $in: descendantThreadIds } } },
     );
 
     // Update Community model
     await Community.updateMany(
       { _id: { $in: Array.from(uniqueCommunityIds) } },
-      { $pull: { threads: { $in: descendantThreadIds } } }
+      { $pull: { threads: { $in: descendantThreadIds } } },
     );
 
     revalidatePath(path);
@@ -200,12 +204,18 @@ export async function fetchThreadById(threadId: string) {
   }
 }
 
-export async function addCommentToThread(
-  threadId: string,
-  commentText: string,
-  userId: string,
-  path: string
-) {
+interface commentParams {
+  threadId: string;
+  commentText: string;
+  userId: string;
+  path: string;
+}
+export async function addCommentToThread({
+  threadId,
+  commentText,
+  userId,
+  path,
+}: commentParams) {
   connectToDB();
 
   try {

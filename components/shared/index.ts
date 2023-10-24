@@ -5,6 +5,7 @@ import RightSideBar from "./RightSideBar";
 import ProfileHeader from "./ProfileHeader";
 import ThreadsTab from "./ThreadsTab";
 import Pagination from "./Pagination";
+import SearchBar from "./SearchBar";
 
 export {
   TopBar,
@@ -14,4 +15,5 @@ export {
   ProfileHeader,
   ThreadsTab,
   Pagination,
+  SearchBar,
 };
