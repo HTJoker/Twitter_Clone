@@ -52,8 +52,9 @@ function ThreadCard({
               <Image
                 src={author.image}
                 alt="user_community_image"
-                fill
-                className="cursor-pointer rounded-full"
+                width={24}
+                height={24}
+                className="cursor-pointer rounded-full object-contain"
               />
             </Link>
 
