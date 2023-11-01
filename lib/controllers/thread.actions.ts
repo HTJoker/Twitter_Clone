@@ -7,7 +7,6 @@ import { connectToDB } from "../mongoose";
 import User from "../models/user.model";
 import Thread from "../models/thread.model";
 import Community from "../models/community.model";
-import prisma from "../prisma";
 
 interface Params {
   text: string;
@@ -21,15 +20,6 @@ interface commentParams {
   commentText: string;
   userId: string;
   path: string;
-}
-
-export async function getAllPosts() {
-  try {
-    const allPosts = await prisma.threads.findMany();
-    return allPosts;
-  } catch (error: any) {
-    throw new Error(`Failed to fetch posts: ${error.message}`);
-  }
 }
 
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
