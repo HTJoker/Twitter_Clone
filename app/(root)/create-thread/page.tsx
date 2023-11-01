@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs";
 import { PostThread } from "@components/forms";
-import { fetchUser } from "@lib/actions/user.actions";
+import { fetchUser } from "@lib/controllers/user.actions";
 import { redirect } from "next/navigation";
 
 const CreateThread = async () => {

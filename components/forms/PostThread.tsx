@@ -19,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 // import { updateUser } from "@/lib/actions/user.actions";
 import { ThreadValidation } from "@lib/validations/thread";
-import { createThread } from "@lib/actions/thread.actions";
+import { createThread } from "@lib/controllers/thread.actions";
 
 const PostThread = ({ userId }: { userId: string }) => {
   const router = useRouter();

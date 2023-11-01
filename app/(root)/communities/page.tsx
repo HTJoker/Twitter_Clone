@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import { SearchBar, Pagination } from "@components/shared";
 import { CommunityCard } from "@components/cards";
 
-import { fetchUser } from "@/lib/actions/user.actions";
-import { fetchCommunities } from "@/lib/actions/community.actions";
+import { fetchUser } from "@lib/controllers/user.actions";
+import { fetchCommunities } from "@lib/controllers/community.actions";
 
 async function Page({
   searchParams,

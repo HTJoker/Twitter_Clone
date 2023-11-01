@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 import { ProfileHeader, ThreadsTab } from "@components/shared";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
-import { fetchUser } from "@lib/actions/user.actions";
+import { fetchUser } from "@lib/controllers/user.actions";
 import { redirect } from "next/navigation";
 import { profileTabs } from "@constants";
 import Image from "next/image";

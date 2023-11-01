@@ -1,6 +1,6 @@
 import { ThreadCard } from "@components/cards";
-import { fetchCommunityPosts } from "@lib/actions/community.actions";
-import { fetchUserPosts } from "@lib/actions/user.actions";
+import { fetchCommunityPosts } from "@lib/controllers/community.actions";
+import { fetchUserPosts } from "@lib/controllers/user.actions";
 import { redirect } from "next/navigation";
 
 interface Props {

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { communityTabs } from "@constants";
 import { ProfileHeader, ThreadsTab } from "@components/shared";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
-import { fetchCommunityDetails } from "@lib/actions/community.actions";
+import { fetchCommunityDetails } from "@lib/controllers/community.actions";
 import { UserCard } from "@components/cards";
 
 const Profile = async ({ params }: { params: { id: string } }) => {

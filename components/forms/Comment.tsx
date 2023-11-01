@@ -18,7 +18,7 @@ import { Input } from "@components/ui/input";
 import { Button } from "@components/ui/button";
 
 import { CommentValidation } from "@lib/validations/thread";
-import { addCommentToThread } from "@lib/actions/thread.actions";
+import { addCommentToThread } from "@lib/controllers/thread.actions";
 
 interface Props {
   threadId: string;

@@ -7,13 +7,35 @@ import { connectToDB } from "../mongoose";
 import User from "../models/user.model";
 import Thread from "../models/thread.model";
 import Community from "../models/community.model";
+import prisma from "../prisma";
+
+interface Params {
+  text: string;
+  author: string;
+  communityId: string | null;
+  path: string;
+}
+
+interface commentParams {
+  threadId: string;
+  commentText: string;
+  userId: string;
+  path: string;
+}
+
+export async function getAllPosts() {
+  try {
+    const allPosts = await prisma.threads.findMany();
+    return allPosts;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch posts: ${error.message}`);
+  }
+}
 
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
 
   try {
-    console.log("fetching data...");
-
     const skipAmount = (pageNumber - 1) * pageSize;
 
     const postsQuery = Thread.find({ parentId: { $in: [null, undefined] } })
@@ -49,13 +71,6 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   } catch (error: any) {
     throw new Error(`Failed to fetch posts: ${error.message}`);
   }
-}
-
-interface Params {
-  text: string;
-  author: string;
-  communityId: string | null;
-  path: string;
 }
 
 export async function createThread({
@@ -96,7 +111,7 @@ export async function createThread({
   }
 }
 
-async function fetchAllChildThreads(threadId: string): Promise<any[]> {
+export async function fetchAllChildThreads(threadId: string): Promise<any[]> {
   const childThreads = await Thread.find({ parentId: threadId });
 
   const descendantThreads = [];
@@ -207,12 +222,6 @@ export async function fetchThreadById(threadId: string) {
   }
 }
 
-interface commentParams {
-  threadId: string;
-  commentText: string;
-  userId: string;
-  path: string;
-}
 export async function addCommentToThread({
   threadId,
   commentText,

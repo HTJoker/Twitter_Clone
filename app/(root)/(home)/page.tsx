@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 
 import ThreadCard from "@components/cards/ThreadCard";
 
-import { fetchPosts } from "@lib/actions/thread.actions";
-import { fetchUser } from "@lib/actions/user.actions";
+import { fetchPosts, getAllPosts } from "@lib/controllers/thread.actions";
+import { fetchUser } from "@lib/controllers/user.actions";
 
 async function Home({
   searchParams,
