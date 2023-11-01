@@ -5,7 +5,7 @@ let isConnected: boolean = false;
 export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
 
-  if (!process.env.DATABASE_URL) console.log("MONGO_URI must be defined");
+  if (!process.env.DATABASE_URL) console.log("DATABASE_URL must be defined");
   if (isConnected) console.log("Already connected to DB");
 
   try {
