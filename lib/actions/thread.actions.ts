@@ -12,8 +12,8 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
 
   try {
-    console.log("fetching data...")
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log("fetching data...");
+
     const skipAmount = (pageNumber - 1) * pageSize;
 
     const postsQuery = Thread.find({ parentId: { $in: [null, undefined] } })
@@ -39,7 +39,7 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 
     const totalPostsCount = await Thread.countDocuments({
       parentId: { $in: [null, undefined] },
-    }); 
+    });
 
     const posts = await postsQuery.exec();
 
